@@ -1,0 +1,13 @@
+<div class="task-list" cdkDropList [id]="listId" [cdkDropListData]="filteredTasks" [cdkDropListConnectedTo]="connectedTo" (cdkDropListDropped)="drop($event)">
+  <h3>{{ status | titlecase }}</h3>
+  <div *ngFor="let task of filteredTasks" cdkDrag class="task-item">
+    <h4>{{ task.title }}</h4>
+    <p>{{ task.description }}</p>
+    <p>Status: {{ task.status }}</p>
+    <p>Priority: {{ task.priority }}</p>
+    <div class="task-actions">
+      <button (click)="onEdit(task.id)">Edit</button>
+      <button (click)="onDelete(task.id)">Delete</button>
+    </div>
+  </div>
+</div>
