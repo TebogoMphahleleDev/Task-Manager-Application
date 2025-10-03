@@ -1,0 +1,45 @@
+<form [formGroup]="taskForm" (ngSubmit)="onSubmit()" class="task-form">
+  <div class="form-group">
+    <label for="title">Title</label>
+    <input id="title" formControlName="title" type="text" required />
+    <div *ngIf="taskForm.get('title')?.invalid && taskForm.get('title')?.touched" class="error">
+      Title is required.
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="description">Description</label>
+    <textarea id="description" formControlName="description"></textarea>
+  </div>
+
+  <div class="form-group">
+    <label for="status">Status</label>
+    <select id="status" formControlName="status" required>
+      <option value="" disabled>Select status</option>
+      <option value="todo">To Do</option>
+      <option value="in-progress">In Progress</option>
+      <option value="done">Done</option>
+    </select>
+    <div *ngIf="taskForm.get('status')?.invalid && taskForm.get('status')?.touched" class="error">
+      Status is required.
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="priority">Priority</label>
+    <select id="priority" formControlName="priority" required>
+      <option value="" disabled>Select priority</option>
+      <option value="low">Low</option>
+      <option value="medium">Medium</option>
+      <option value="high">High</option>
+    </select>
+    <div *ngIf="taskForm.get('priority')?.invalid && taskForm.get('priority')?.touched" class="error">
+      Priority is required.
+    </div>
+  </div>
+
+  <div class="form-actions">
+    <button type="submit" class="btn btn-primary">Save</button>
+    <button type="button" (click)="onCancel()" class="btn btn-secondary">Cancel</button>
+  </div>
+</form>
